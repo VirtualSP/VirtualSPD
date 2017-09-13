@@ -4,7 +4,7 @@
 
 var src, source, splitter, audio, fc,flen;
 var xv, yv, zv, vol, rv, tv,tvv, cv, bv, cf,cn2 ,tfile,gl;
- vol = 0.8; ctlvol = 0.7; cv = 1.0; rv =-0.4; cf = 0;   //***
+ vol = 0.8; ctlvol = 0.7; cv = 1.0; rv =0.0; cf = 0;   //***
 var obj= {};
 
 var AudioContext = window.AudioContext || window.webkitAudioContext; 
@@ -26,7 +26,7 @@ var pannerL = audioCtx.createPanner();
  pannerL.panningModel = 'HRTF';
  pannerL.distanceModel = 'linear';
  pannerL.refDistance = 1;
- pannerL.maxDistance = 1000;
+ pannerL.maxDistance = 10000;
  pannerL.rolloffFactor = 1;
  pannerL.coneInnerAngle = 360; //120;
  pannerL.coneOuterAngle = 360; // 180;
@@ -34,9 +34,9 @@ var pannerL = audioCtx.createPanner();
  pannerL.setOrientation(0,0,1);
 var pannerBL = audioCtx.createPanner();
  pannerBL.panningModel = 'HRTF';
- pannerBL.distanceModel = 'inverse';
+ pannerBL.distanceModel = 'linear';
  pannerBL.refDistance = 1;
- pannerBL.maxDistance = 1000;
+ pannerBL.maxDistance = 10000;
  pannerBL.rolloffFactor = 4;
  pannerBL.coneInnerAngle = 360;
  pannerBL.coneOuterAngle = 360;
@@ -50,7 +50,7 @@ var pannerR = audioCtx.createPanner();
  pannerR.panningModel = 'HRTF';
  pannerR.distanceModel = 'linear';
  pannerR.refDistance = 1;
- pannerR.maxDistance = 1000;
+ pannerR.maxDistance = 10000;
  pannerR.rolloffFactor = 1;
  pannerR.coneInnerAngle = 360; // 120;
  pannerR.coneOuterAngle = 360; // 180;
@@ -59,7 +59,7 @@ var pannerR = audioCtx.createPanner();
 
 var pannerBR = audioCtx.createPanner(); 
  pannerBR.panningModel = 'HRTF';
- pannerBR.distanceModel = 'inverse';
+ pannerBR.distanceModel = 'linear';
  pannerBR.refDistance = 10;
  pannerBR.maxDistance = 1000;
  pannerBR.rolloffFactor = 4;
@@ -67,9 +67,9 @@ var pannerBR = audioCtx.createPanner();
  pannerBR.coneOuterAngle = 360;
  pannerBR.coneOuterGain = 0;
  pannerBR.setOrientation(0,0,1);
-var pannerSR = pannerBR;               //***
-var pannerUR = pannerBR;
-var delaySR = audioCtx.createDelay(); delaySR.delayTime.value=0.01;
+//var pannerSR = pannerBR;               //***
+//var pannerUR = pannerBR;
+//var delaySR = audioCtx.createDelay(); delaySR.delayTime.value=0.01;
 
 var listener = audioCtx.listener; 
 
@@ -121,8 +121,8 @@ function ini() {
         function () { changeValueY(document.querySelector("#numY").value); });
   document.querySelector("#numX").addEventListener("change",
         function () { changeValueX(document.querySelector("#numX").value); });
-  document.querySelector("#rSp").addEventListener("change",
-        function () { changeVolRear(document.querySelector("#rSp").value); });
+  //document.querySelector("#rSp").addEventListener("change",
+        //function () { changeVolRear(document.querySelector("#rSp").value); });
   document.querySelector("#bass").addEventListener("change",
         function () { changeBass(document.querySelector("#bass").value); });
   document.querySelector("#treble").addEventListener("change",
@@ -205,7 +205,7 @@ var geometry_cube = new THREE.CubeGeometry (2, 3, 1.5);
 function movsp() { 
   cubeL.position.setX(-xv); cubeL.position.setY(yv); cubeL.position.setZ(zv);
   cubeR.position.setX(xv);  cubeR.position.setY(yv); cubeR.position.setZ(zv); 
-    cubeL.rotation.x=Math.atan(-yv/zv); cubeR.rotation.x=Math.atan(-yv/zv);
+    cubeL.rotation.x=Math.atan(-yv/zv)/2; cubeR.rotation.x=Math.atan(-yv/zv)/2;
     cubeL.rotation.y=Math.atan(-xv/zv); cubeR.rotation.y=Math.atan(xv/zv); 
  renderer.render( scene, camera ); 
  chkLoop();  // for chrome 57 bug !! 
@@ -257,25 +257,25 @@ function loadsrc() {
 function playGain() {
   source.connect(splitter); 
     splitter.connect(pannerL, 0).connect(bassL).connect(trebleL).connect(audioCtx.destination);
-    splitter.connect(gainBL, 0).connect(pannerBL).connect(delaySL).connect(audioCtx.destination);
-    splitter.connect(gainBL, 0).connect(pannerSL).connect(delaySL).connect(audioCtx.destination); 
-    splitter.connect(gainBL, 0).connect(pannerUL).connect(delaySL).connect(audioCtx.destination);
+    splitter.connect(gainBL, 0).connect(pannerBL).connect(audioCtx.destination);
+    //splitter.connect(gainBL, 0).connect(pannerSL).connect(delaySL).connect(audioCtx.destination); 
+    //splitter.connect(gainBL, 0).connect(pannerUL).connect(delaySL).connect(audioCtx.destination);
 	//var pannerUR = pannerBR;    
   
     splitter.connect(pannerR, 1).connect(bassR).connect(trebleR).connect(audioCtx.destination); 
-    splitter.connect(gainBR, 1).connect(pannerBR).connect(delaySR).connect(audioCtx.destination);
-    splitter.connect(gainBR, 1).connect(pannerSR).connect(delaySR).connect(audioCtx.destination);  
-    splitter.connect(gainBR, 1).connect(pannerUR).connect(delaySR).connect(audioCtx.destination);
+    splitter.connect(gainBR, 1).connect(pannerBR).connect(audioCtx.destination);
+    //splitter.connect(gainBR, 1).connect(pannerSR).connect(delaySR).connect(audioCtx.destination);  
+    //splitter.connect(gainBR, 1).connect(pannerUR).connect(delaySR).connect(audioCtx.destination);
   //source.start(0);
  audio.play();
 }
 
-function setPos(x,y,z) { 
- pannerL.setPosition( -x, y*4, z*3); //pannerL.setOrientation(x,-y*2,-z*3);  
-  pannerBL.setPosition(-x,y*2, -z*3); pannerSL.setPosition(-x*4,y*2, 3*z/2); pannerUL.setPosition(-x/2,y*4,3*z/2);
- pannerR.setPosition( x,y*4, z*3); //pannerR.setOrientation(-x,-y*2,-z*3); 
-  pannerBR.setPosition( x,y*2, -z*3); pannerSR.setPosition( x*4,y*2, 3*z/2); pannerUR.setPosition( x/2,y*4,3*z/2);
- listener.setPosition(0,-y*6,-z*8);
+function setPos(x,y,z) { x=x*10; y=y*10; z=z*10;
+ pannerL.setPosition( -x, y*4, z*4); //pannerL.setOrientation(x,-y*2,-z*3);  
+  pannerBL.setPosition(-x*2,y*4, z*5); //pannerSL.setPosition(-x*4,y*2, 3*z/2); pannerUL.setPosition(-x/2,y*4,3*z/2);
+ pannerR.setPosition( x,y*4, z*4); //pannerR.setOrientation(-x,-y*2,-z*3); 
+  pannerBR.setPosition( x*2,y*4, z*5); //pannerSR.setPosition( x*4,y*2, 3*z/2); pannerUR.setPosition( x/2,y*4,3*z/2);
+ //listener.setPosition(0,-y*6,-z*8);
  movsp();   
 //audio.currentTime=audio.currentTime-0.1; 
 }
@@ -291,6 +291,7 @@ function changeValueY(yvalue) {
  yv = yvalue; document.getElementById("panValueY").innerHTML="pos_Y = "+yv; 
  document.querySelector("#numY").value = yv;
  setPos( xv, yv, zv );  
+ gainBL.gain.value = zv/25; gainBR.gain.value = zv/25;
 }
 
 function changeValueX(xvalue) {  
@@ -298,13 +299,13 @@ function changeValueX(xvalue) {
  document.querySelector("#numX").value = xv;
  setPos( xv, yv, zv ); 
 }
-
+/*
 function changeVolRear(rSpVol) {  
  rv = rSpVol; document.getElementById("rspVol").innerHTML="surround_vol = " + rv; 
  document.querySelector("#rSp").value = rv; 
  gainBL.gain.value = -rv; gainBR.gain.value = -rv;
 }
-
+*/
 function changeBass(bvalue) {
   bassL.gain.value = bvalue; bassR.gain.value = bvalue; 
   bv = bvalue;  //bv = bvalue*3 + 45;

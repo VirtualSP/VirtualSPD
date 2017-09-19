@@ -20,7 +20,9 @@ gainR.gain.value = vol; gainBR.gain.value = rv;
 splitter = audioCtx.createChannelSplitter(2);
 
 xv = 4; yv = 2; zv = -4; rv = 0.2; tv = 0; bv = 0; gl=0;
-zv = localStorage.getItem('numZ'); //+++++++++++++++++++++++
+zv = localStorage.getItem('numZ');  if (zv===null) {zv=-12}; //+++++++++++++++++++++++
+yv = localStorage.getItem('numY');  if (yv===null) {yv=2};
+xv = localStorage.getItem('numX');  if (xv===null) {xv=4};
 
 var pannerL = audioCtx.createPanner(); 
  pannerL.panningModel = 'HRTF';
@@ -119,8 +121,12 @@ function ini() {
 
   document.querySelector("#numY").addEventListener("change",
         function () { changeValueY(document.querySelector("#numY").value); });
+	document.getElementById("panValueY").innerHTML="pos_Y = "+yv; //+++++++++++++++++++++++
+
   document.querySelector("#numX").addEventListener("change",
         function () { changeValueX(document.querySelector("#numX").value); });
+	document.getElementById("panValueX").innerHTML="pos_X = "+xv; //+++++++++++++++++++++++
+
   //document.querySelector("#rSp").addEventListener("change",
         //function () { changeVolRear(document.querySelector("#rSp").value); });
   document.querySelector("#bass").addEventListener("change",
@@ -289,14 +295,16 @@ function changeValueZ(zvalue) {
 
 function changeValueY(yvalue) {  
  yv = yvalue; document.getElementById("panValueY").innerHTML="pos_Y = "+yv; 
- document.querySelector("#numY").value = yv;
+ //document.querySelector("#numY").value = yv;
+ localStorage.setItem('numY', document.querySelector('#numY').value); //+++++++++++++++++++++++
  setPos( xv, yv, zv );  
  gainBL.gain.value = zv/25; gainBR.gain.value = zv/25;
 }
 
 function changeValueX(xvalue) {  
  xv = xvalue; document.getElementById("panValueX").innerHTML="dist_X = "+xv; 
- document.querySelector("#numX").value = xv;
+ //document.querySelector("#numX").value = xv;
+ localStorage.setItem('numX', document.querySelector('#numX').value); //+++++++++++++++++++++++
  setPos( xv, yv, zv ); 
 }
 /*

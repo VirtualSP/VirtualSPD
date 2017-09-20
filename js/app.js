@@ -118,14 +118,17 @@ function ini() {
   document.querySelector("#numZ").addEventListener("change",
         function () { changeValueZ(document.querySelector("#numZ").value); });
 	document.getElementById("panValueZ").innerHTML="pos_Z = "+zv; //+++++++++++++++++++++++
+	document.querySelector("#numZ").value = zv;
 
   document.querySelector("#numY").addEventListener("change",
         function () { changeValueY(document.querySelector("#numY").value); });
 	document.getElementById("panValueY").innerHTML="pos_Y = "+yv; //+++++++++++++++++++++++
+	document.querySelector("#numY").value = yv;
 
   document.querySelector("#numX").addEventListener("change",
         function () { changeValueX(document.querySelector("#numX").value); });
 	document.getElementById("panValueX").innerHTML="pos_X = "+xv; //+++++++++++++++++++++++
+	document.querySelector("#numX").value = xv;
 
   //document.querySelector("#rSp").addEventListener("change",
         //function () { changeVolRear(document.querySelector("#rSp").value); });

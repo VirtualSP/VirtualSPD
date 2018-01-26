@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>   
-<title>Web Audio Virtual Speaker</title> 
+<title>Virtual Speaker Web APP</title> 
 <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
 <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
    
@@ -11,42 +11,37 @@
 
 </head>
 
-<body>  
-<b>Virtual Speakers System </b>	  
-    
- 
-<label id="fn" ></label>
-<br>
+<body onload="ini()">  
+<b>Virtual Speakers </b>	  
+ <button id="loop" >loop:OFF</button>   
 <span id="fname" >
 <input type="file" id="input" multiple accept="audio/*">
-</span>
- <br> 
+</span><br>
+<label id="fn" >...</label> <br> 
     
 <div style="position: absolute; left: 420px; top: 60px;">
 
 <span id="panValueZ" >pos_Z =-4</span><br>    
- <input type="range" id="numZ" min="-15" max="5" step="0.5" value="-4" /> 
+ <input type="range" id="numZ" min="-15" max="5" step="0.2" value="-4" /> 
  <br><br> 
 <span id="panValueY" >pos_Y = 2</span><br> 
- <input type="range" id="numY" min="-5" max="15" step="0.5" value="2"  />    
+ <input type="range" id="numY" min="-5" max="15" step="0.2" value="2"  />    
  <br><br>
 <span id="panValueX">dist_X = 4</span><br>
- <input type="range" id="numX" min="-5" max="15" step="0.5" value="4" />  
-<br><br>
-<span id="rspVol">surround vol = 0.2</span><br>
- <input type="range" id="rSp" min="0" max="1" step="0.02" value="0.2" /> 
-
-<br><br><br>
+ <input type="range" id="numX" min="-5" max="15" step="0.2" value="4" />  
+<br>
+ 
+<br>
 <span id="bassValue">bass = 0</span><br>
  <input type="range" id="bass" min="-15" max="15" step="0.2" value="0" />
 <br>
 <span id="trebleValue">treble = 0</span><br>
  <input type="range" id="treble" min="-15" max="15" step="0.2" value="0" /> 
-<br>
+
 
 </div>
-<canvas id="tCanvas" width="400" height="400" style="border:1px solid #CCC;"/></canvas><br>
-
+<canvas id="tCanvas" width="400" height="400" style="border:1px solid #CCC;"/></canvas>
 <br>
+
 </body>
 </html>

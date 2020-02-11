@@ -1,4 +1,4 @@
-var CACHE_NAME = 'pwa-sample-caches';
+var CACHE_NAME = 'VSPcache';
 var urlsToCache = [
     '/js/',
     '/js/app66.js',

@@ -3,8 +3,7 @@ var urlsToCache = [
     '/js/',
     '/js/app66.js',
     '/js/three.min.js',
-     '/js/musicmetadata.js',
-
+     '/js/musicmetadata.js'
 ];
 
 self.addEventListener('install', function(event) {

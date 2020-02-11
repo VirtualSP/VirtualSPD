@@ -1,9 +1,9 @@
 var CACHE_NAME = 'VSPcache';
 var urlsToCache = [
     'https://virtualsp.github.io/VirtualSPD/',
-    '/js/app66.js',
-    '/js/three.min.js',
-     '/js/musicmetadata.js'
+    'https://virtualsp.github.io/VirtualSPD/js/app66.js',
+    'https://virtualsp.github.io/VirtualSPD/js/three.min.js',
+     'https://virtualsp.github.io/VirtualSPD/js/musicmetadata.js'
 ];
 
 self.addEventListener('install', function(event) {

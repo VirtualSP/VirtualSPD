@@ -1,6 +1,6 @@
 var CACHE_NAME = 'VSPcache';
 var urlsToCache = [
-    '/js/',
+    'https://virtualsp.github.io/VirtualSPD/',
     '/js/app66.js',
     '/js/three.min.js',
      '/js/musicmetadata.js'

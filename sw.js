@@ -1,4 +1,4 @@
-var CACHE_NAME = 'VSPcache';
+var CACHE_NAME = 'VSPcache1.8.2.0';
 var urlsToCache = [
     'https://virtualsp.github.io/VirtualSPD/',
     'https://virtualsp.github.io/VirtualSPD/js/app66.js',

@@ -1,7 +1,7 @@
 {
     "short_name": "PWA Virtual Speakers",
     "name": "PWA web Virtual Speakers",
-    "display": "standalone",
+    "display": "browser",
     "start_url": "index.html",
     "icons": [
         {

@@ -1,6 +1,6 @@
 var CACHE_NAME = 'VSPcache1.8.2.2';
 var urlsToCache = [
-    '/',
+    '/index.html',
     '/js/app66.js',
     '/js/three.min.js',
     '/js/musicmetadata.js'

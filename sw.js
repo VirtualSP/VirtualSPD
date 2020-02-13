@@ -1,4 +1,4 @@
-var CACHE_NAME = 'VSPcache1.8.2.2';
+var CACHE_NAME = 'VSPcache1822';
 var urlsToCache = [
     '/index.html',
     '/js/app66.js',

@@ -4,7 +4,7 @@ var urlsToCache = [
     '/js/app66.js',
     '/js/three.min.js',
     '/js/musicmetadata.js',
-    '/js/icon_128.png',
+    '/js/icon_192.png',
      '/js/icon_128.png'
 
 ];

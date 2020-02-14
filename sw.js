@@ -7,12 +7,11 @@ var urlsToCache = [
     '/js/musicmetadata.js',
     '/icon_192.png',
      '/icon_128.png'
-
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', (e) => {
 	console.log('[Service Worker] Install');
-	event.waitUntil(
+	e.waitUntil(
 	caches.open(CACHE_NAME).then((cache) => {
           		console.log('[Service Worker] Caching all: app shell and content');
       	return cache.addAll(urlsToCache);

@@ -10,11 +10,11 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', function(event) {
-    event.waitUntil(caches
-        .open(CACHE_NAME)
-        .then(function(cache) {
-            return cache.addAll(urlsToCache);
-        })
+    event.waitUntil(
+	caches.open(cacheName).then((cache) => {
+          		console.log('[Service Worker] Caching all: app shell and content');
+      	return cache.addAll(urlsToCache);
+    })
     );
 });
 

@@ -14,7 +14,11 @@ self.addEventListener('install', (e) => {
 	e.waitUntil(
 	caches.open(CACHE_NAME).then((cache) => {
           		console.log('[Service Worker] Caching all: app shell and content');
-      	return cache.addAll(urlsToCache);
+      	return cache.addAll(urlsToCache)
+	.then(() => {
+          console.info('All files are cached');
+          return self.skipWaiting(); //To forces the waiting service worker to become the active service worker
+        })
     })
     );
 });

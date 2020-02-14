@@ -9,7 +9,8 @@ var urlsToCache = [
 
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
+	console.log('[Service Worker] Install');
     event.waitUntil(
 	caches.open(CACHE_NAME).then((cache) => {
           		console.log('[Service Worker] Caching all: app shell and content');

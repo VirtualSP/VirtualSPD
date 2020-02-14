@@ -4,14 +4,14 @@ var urlsToCache = [
     '/js/app66.js',
     '/js/three.min.js',
     '/js/musicmetadata.js',
-    '/js/icon_192.png',
-     '/js/icon_128.png'
+    '/icon_192.png',
+     '/icon_128.png'
 
 ];
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
-	caches.open(cacheName).then((cache) => {
+	caches.open(CACHE_NAME).then((cache) => {
           		console.log('[Service Worker] Caching all: app shell and content');
       	return cache.addAll(urlsToCache);
     })

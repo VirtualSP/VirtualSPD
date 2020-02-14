@@ -1,12 +1,12 @@
 var CACHE_NAME = 'VSPcache1822';
 var urlsToCache = [
-     '/',
-    '/index.html',
-    '/js/app66.js',
-    '/js/three.min.js',
-    '/js/musicmetadata.js',
-    '/icon_192.png',
-     '/icon_128.png'
+     '/VirtualSPD/,
+    '/VirtualSPD/index.html',
+    '/VirtualSPD/js/app66.js',
+    '/VirtualSPD/js/three.min.js',
+    '/VirtualSPD/js/musicmetadata.js',
+    '/VirtualSPD/icon_192.png',
+     '/VirtualSPD/icon_128.png'
 ];
 
 self.addEventListener('install', (e) => {

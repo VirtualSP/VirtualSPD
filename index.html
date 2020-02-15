@@ -27,18 +27,15 @@
 
 <style>
 	input[type='range']  {
-		-webkit-appearance: none ; width:256px;
+		-webkit-appearance: none ; width:256px; 
+		background-color: #cccccc; height: 30px; cursor: pointer;
 	}
 	input[type='range']::-webkit-slider-runnable-track {
 		-webkit-appearance: none ;
 		appearance: none ;
 		border-radius: 5px;
 		box-shadow: inset 1px 1px 1px rgba(000,000,000,0.10);
-		background-color: #cccccc;
-		height: 30px;
-		vertical-align:middle;
-		border: none;
-		cursor: pointer;
+		vertical-align:middle;		
 	}
 	input[type='range']::-webkit-slider-thumb {
 		-webkit-appearance: none;
@@ -47,11 +44,14 @@
 		box-shadow: inset 0 0 0 4px #CCC, inset 0 0 4px #CCC, inset 0 0 0 4px #CCC;
 		height: 30px; width: 30px;
 		vertical-align:middle;
-		border: none;
-		cursor: pointer;
+		border: none;		
 		margin-top: 0px;
 	}
+	input[type='range']::-moz-range-thumb {
+  		width: 25px; height: 25px; background: #037cd5; 
+	}
  </style>
+
 </head>
 
 <body onload="ini()">  

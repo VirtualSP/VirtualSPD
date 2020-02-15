@@ -3,7 +3,13 @@
     "name": "PWA web Virtual Speakers",
     "display": "standalone",
     "start_url": "https://virtualsp.github.io/VirtualSPD/index.html",
+    "background_color": "#3333CC",
     "icons": [
+         {
+            "src": "icon_768.png",
+            "sizes": "768x768",
+            "type": "image/png"
+        },
         {
             "src": "icon_192.png",
             "sizes": "192x192",

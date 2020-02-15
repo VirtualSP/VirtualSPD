@@ -4,6 +4,7 @@ var urlsToCache = [
     '/VirtualSPD/js/app66.js',
     '/VirtualSPD/js/three.min.js',
     '/VirtualSPD/js/musicmetadata.js',
+    '/VirtualSPD/icon_128.png',
     '/VirtualSPD/icon_192.png',
      '/VirtualSPD/icon_512.png'
 ];

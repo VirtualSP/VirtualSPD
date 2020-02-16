@@ -74,11 +74,11 @@ gainBR = audioCtx.createGain(); gainBR.gain.value = rv/4; 	//gainBR.gain.automat
  gainRL = audioCtx.createGain(); gainRL.gain.value = rv;  	//gainBR.gain.automationRate='k-rate';
  gainRR = audioCtx.createGain(); gainRR.gain.value = rv; 	//gainBR.gain.automationRate='k-rate';
 
-//delayL = audioCtx.createDelay(); delayL.delayTime.value=0.004*(-zv/6); delayL.delayTime.automationRate='k-rate';
+//delayL = audioCtx.createDelay(); delayL.delayTime.value=0.004*(-zv/6); delaL.delayTime.automationRate='k-rate';
 //delayR = audioCtx.createDelay(); delayR.delayTime.value=0.004*(-zv/6); delayR.delayTime.automationRate='k-rate';
-delayBL = audioCtx.createDelay(); delayBL.delayTime.value=0.04*(-zv/8); delayBL.delayTime.automationRate='k-rate'; 
+delayBL = audioCtx.createDelay(); delayBL.delayTime.value=0.04*(-zv/5); delayBL.delayTime.automationRate='k-rate'; 
 delayBR = audioCtx.createDelay(); delayBR.delayTime.value=0.04*(-zv/8); delayBR.delayTime.automationRate='k-rate';
- delayRL = audioCtx.createDelay(); delayRL.delayTime.value=0.04*(-zv/8); delayRL.delayTime.automationRate='k-rate';
+ delayRL = audioCtx.createDelay(); delayRL.delayTime.value=0.04*(-zv/5); delayRL.delayTime.automationRate='k-rate';
  delayRR = audioCtx.createDelay(); delayRR.delayTime.value=0.04*(-zv/8); delayRR.delayTime.automationRate='k-rate';
 
 // --------------------------------------------------------------------------
@@ -102,7 +102,7 @@ len=analyserL.frequencyBinCount;
 // --------------------------------------------------------------------------
 
 audio = new Audio(src); audio.controls = true; audio.volume=vol;	audio.clientWidth=50;
-audio.crossOrigin = "anonymous";				// +++ for chrome71 CORS access ++++
+audio.crossOrigin = "anonymous";			// +++ for chrome71- CORS access ++++
   document.body.appendChild(audio); 
   source = audioCtx.createMediaElementSource(audio); 
  //setPos(xv,yv,zv);
@@ -268,7 +268,7 @@ function playGain() {
   splitter.connect(gainRL,0).connect(pannerRL).connect(trebleRL).connect(delayRL).connect(audioCtx.destination);					
   splitter.connect(gainBL,0).connect(pannerBL).connect(delayBL).connect(audioCtx.destination);			//         L	             R		
     //splitter.connect(pannerL,0).connect(analyserL); //splitter.connect(pannerRL,0).connect(analyserLR);
-							//	    o
+												//	    o
   splitter.connect(pannerR,1).connect(bassR).connect(trebleR).connect(audioCtx.destination); 			
   splitter.connect(gainRR,1).connect(pannerRR).connect(trebleRR).connect(delayRR).connect(audioCtx.destination);			
   splitter.connect(gainBR,1).connect(pannerBR).connect(delayBR).connect(audioCtx.destination); 		//          BR           BL
@@ -279,8 +279,8 @@ function playGain() {
 
 function setPos(x,y,z) {  var fx,frx;
  if (fname) { fx = Math.abs(8/z); //frx = fx*0.8;
-  pannerL.setPosition( -x, y, z*2); pannerBL.setPosition( x*2, -y*2, -z*4);  pannerRL.setPosition(-x*2, y*2, z*3);   //2019/1/25
-  pannerR.setPosition(  x, y, z*2); pannerBR.setPosition(-x*2, -y*2, -z*4);  pannerRR.setPosition( x*2, y*2, z*3); 
+  pannerL.setPosition( -x, y*2, z*2); pannerBL.setPosition( x*2, -y*3, -z*4);  pannerRL.setPosition(-x*2, y*2, z*3);   //2019/1/25
+  pannerR.setPosition(  x, y*2, z*2); pannerBR.setPosition(-x*2, -y*3, -z*4);  pannerRR.setPosition( x*2, y*2, z*3); 
  }
  movsp();     
 }
@@ -451,12 +451,12 @@ function renderA() {
 	 //y = 80-(ds*(-zv)/4);  	    x = ( def*xv*(y+100)/256 )+200 ; 	z = -sef/20
 	y = 120-Math.abs(ds)*(-zv)/2;  x = ( def*xv/(-zv)*10 )+200 ; 	z = -sef/20
 
-	if (y < 120 && z<-3) {	// 50-100?
+	//if (y < 120 && z<-3) {	// 50-100?
 	hue = fq/len * 360; //y=50
     	 //ctxA.strokeStyle = 'hsla(' + hue + ', 100%, 65%,' +y/80+ ')'; 	 //y:35-110?
 	ctxA.strokeStyle = 'hsl(' + hue + ', 100%, 60% )'; 
-    	 ctxA.strokeRect( x, y+z, y/30, z );
-	 }
+    	 ctxA.strokeRect( x, y+z-yv*8+120, y/30, z );
+	// }
 	sar[fq] = sef; 	 //dar[fq] = sar[fq]; 
        fq++;
     } ; //ct = audio.currentTime;

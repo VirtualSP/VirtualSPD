@@ -1,10 +1,10 @@
-var CACHE_NAME = 'VSPcache1941';
+var CACHE_NAME = 'VSPcache1942';
 var urlsToCache = [
     '/VirtualSPD/index.html',
     '/VirtualSPD/js/app66.js',
     '/VirtualSPD/js/three.min.js',
     '/VirtualSPD/js/musicmetadata.js',
-    '/VirtualSPD/icon_128.png',
+ 
     '/VirtualSPD/icon_192.png',
      '/VirtualSPD/icon_512.png'
 ];

@@ -1,7 +1,7 @@
-var CACHE_NAME = 'VSPcache1944';
+var CACHE_NAME = 'VSPcache1952';
 var urlsToCache = [
     '/VirtualSPD/index.html',
-    '/VirtualSPD/js/app66.js',
+    '/VirtualSPD/js/app86.js',
     '/VirtualSPD/js/three.min.js',
     '/VirtualSPD/js/musicmetadata.js',
  
@@ -30,6 +30,23 @@ self.addEventListener('fetch', function(event) {
             return response ? response : fetch(event.request);
         })
     );
+});
+
+self.addEventListener('activate', function(event) {
+  event.waitUntil(
+    (function() {
+      caches.keys().then(function(oldCacheKeys) {
+        oldCacheKeys
+          .filter(function(key) {
+            return key !== CACHE_NAME;
+          })
+          .map(function(key) {
+            return caches.delete(key);
+          });
+      });
+      clients.claim();
+    })()
+  );
 });
 
 

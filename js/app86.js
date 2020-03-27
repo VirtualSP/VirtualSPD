@@ -480,7 +480,7 @@ function renderA() {
 
 function chk3Dsv() { 
  if (document.getElementById("3Dfrq").checked ) { 
-          	anf = true; pannerL.connect(analyserL); pannerR.connect(analyserR); maxdef=0; renderA(); }  
+          	anf = true; pannerL.connect(analyserL); pannerR.connect(analyserR); defpos(); maxdef=0; renderA(); }  
  else { 	anf = false; analyserL.disconnect(); analyserR.disconnect();  }
  };
 // --------------------------------------------------------------------------

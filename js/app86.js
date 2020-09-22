@@ -286,11 +286,11 @@ function setPos(x,y,z) { 		 //var fx,frx;
 function defpos() {
  xv=5; yv=2; zv=-10; //setPos(xv,yv,zv); 
  document.getElementById("xValue").innerHTML="pos_x = "+ xv;
-  //document.querySelector("#xv").value = xv;
+  document.querySelector("#xv").value = xv;
  document.getElementById("yValue").innerHTML="pos_y = "+ yv;
-  //document.querySelector("#yv").value = yv;
+  document.querySelector("#yv").value = yv;
  document.getElementById("zValue").innerHTML="pos_z = "+ zv;
-  //document.querySelector("#zv").value = zv;
+  document.querySelector("#zv").value = zv;
    if ( fname ) { delayRL.delayTime.setValueAtTime(0.004*(-zv/4),0);
    	         delayRR.delayTime.setValueAtTime(0.004*(-zv/4),0); }
  setPos(xv,yv,zv); 

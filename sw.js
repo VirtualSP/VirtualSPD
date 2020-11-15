@@ -1,4 +1,4 @@
-var CACHE_NAME = 'VSPcache197';
+var CACHE_NAME = 'VSPcache198';
 var urlsToCache = [
     '/VirtualSPD/index.html',
     '/VirtualSPD/js/app86.js',
@@ -30,42 +30,6 @@ self.addEventListener('fetch', function(event) {
             return response ? response : fetch(event.request);
         })
     );
-});
-
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    (function() {
-      caches.keys().then(function(oldCacheKeys) {
-        oldCacheKeys
-          .filter(function(key) {
-            return key !== CACHE_NAME;
-          })
-          .map(function(key) {
-            return caches.delete(key);
-          });
-      });
-      clients.claim();
-    })()
-  );
-});
-
-
-
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    (function() {
-      caches.keys().then(function(oldCacheKeys) {
-        oldCacheKeys
-          .filter(function(key) {
-            return key !== CACHE_NAME;
-          })
-          .map(function(key) {
-            return caches.delete(key);
-          });
-      });
-      clients.claim();
-    })()
-  );
 });
 
 self.addEventListener('activate', function(event) {
